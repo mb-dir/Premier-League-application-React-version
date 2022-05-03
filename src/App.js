@@ -1,5 +1,7 @@
 import "./App.css";
 
+import Slider from "./components/Slider/Slider";
+
 function App() {
   return (
     <main className="App">
@@ -10,7 +12,7 @@ function App() {
           clubs like stadion, date of creation, current players, etc.
         </p>
       </header>
-      {/* Here will be slider with all PL clubs and special section with info about clicked club */}
+      <Slider />
     </main>
   );
 }
