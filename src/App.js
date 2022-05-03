@@ -1,6 +1,7 @@
 import "./App.css";
 
 import Slider from "./components/Slider/Slider";
+import ClubInfo from "./components/ClubInfo/ClubInfo";
 
 function App() {
   return (
@@ -13,6 +14,7 @@ function App() {
         </p>
       </header>
       <Slider />
+      <ClubInfo />
     </main>
   );
 }
