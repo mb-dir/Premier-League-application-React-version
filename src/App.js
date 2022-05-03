@@ -1,12 +1,21 @@
 import "./App.css";
 
+import Slider from "./components/Slider/Slider";
+import ClubInfo from "./components/ClubInfo/ClubInfo";
+
 function App() {
   return (
-    <div className="App">
+    <main className="App">
       <header className="App-header">
-        <h1>Hello another React app</h1>
+        <h1>Premier League Clubs</h1>
+        <p>
+          Simple application which shows basic information about Premier League
+          clubs like stadion, date of creation, current players, etc.
+        </p>
       </header>
-    </div>
+      <Slider />
+      <ClubInfo />
+    </main>
   );
 }
 

@@ -1,0 +1,33 @@
+.Slider-wrapper {
+  min-height: 100px;
+  width: 100%;
+  border: 3px solid #00cf91;
+  border-radius: 5px;
+  padding: 20px;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  flex-wrap: wrap;
+}
+.Slider-header {
+  color: beige;
+}
+.Slider-crest {
+  height: 50px;
+  margin: 10px;
+}
+.Slider-crest:hover {
+  cursor: pointer;
+}
+
+/* Media queries */
+@media (min-width: 768px) {
+  .Slider-wrapper {
+    width: 60%;
+    margin: 0 auto;
+  }
+  .Slider-crest {
+    height: 80px;
+    margin: 20px;
+  }
+}
