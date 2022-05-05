@@ -23,7 +23,7 @@ function App() {
         </p>
       </header>
       <Slider settingID={settingID} />
-      <ClubInfo />
+      <ClubInfo clubID={clubID} />
     </main>
   );
 }
