@@ -1,25 +1,31 @@
 import React from "react";
 import "./ClubInfo.css";
 
+//Durning first render clubID is 0, cuz it is the default value of state in App
 export default function ClubInfo(clubID) {
   const [ clubInfo, setClubInfo ] = React.useState({});
 
-  //Durning first render clubID is 0, and request of club with id === clubID has no sense so it is te reason why there is this if statemenet which checks if clubID is 0
-  const API_KEY = `https://api.football-data.org/v2/competitions/PL/teams/${clubID.clubID ===
-  0
-    ? ""
-    : clubID.clubID}`;
-  React.useEffect(() => {
-    fetch(API_KEY, {
-      method: "GET",
-      headers: {
-        "X-Auth-Token": "b100821898ab4506af51fd31aa51125e",
-      },
-    })
-      .then(club => club.json())
-      //Array of objects - each object has info about concrete PL team
-      .then(club => setClubInfo(club));
-  }, []);
+  //Get all teams and find the clicked team by clubID
+  const API_KEY = "https://api.football-data.org/v2/competitions/PL/teams/";
+  React.useEffect(
+    () => {
+      fetch(API_KEY, {
+        method: "GET",
+        headers: {
+          "X-Auth-Token": "b100821898ab4506af51fd31aa51125e",
+        },
+      })
+        .then(clubs => clubs.json())
+        .then(clubs => {
+          const clickedClub = clubs.teams.find(club => {
+            return club.id === clubID.clubID;
+          });
+          setClubInfo(clickedClub);
+        });
+    },
+    [ clubID.clubID ]
+    //Everytime when clubID is changed get info about new(clicked) club
+  );
   return (
     <section className="ClubInfo">
       <h2>Here will be info about the clicked club</h2>
