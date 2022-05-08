@@ -57,8 +57,7 @@ export default function ClubInfo(clubID) {
   }
   return (
     <section className="ClubInfo">
-      <h2>Here will be info about the clicked club</h2>
-      {content}
+      {clubInfo ? content : <h2>Here will be info about the clicked club</h2>}
     </section>
   );
 }
