@@ -4,10 +4,10 @@ import "./ClubInfo.css";
 //Durning first render clubID is 0, cuz it is the default value of state in App
 export default function ClubInfo(clubID) {
   const [ clubInfo, setClubInfo ] = React.useState({});
-  const API_KEY = "https://api.football-data.org/v2/competitions/PL/teams/";
+  const API_KEY = "https://api.football-data.org/v2/teams/";
   React.useEffect(
     () => {
-      //If there is no first render(durning first render clubID is 0, cuz it is default state value in App component) get info about clicked club - BUT I get an error "Access to fetch at 'https://api.football-data.org/v2/competitions/PL/teams/68' from origin 'http://localhost:3000' has been blocked by CORS policy: No 'Access-Control-Allow-Origin' header is present on the requested resource. If an opaque response serves your needs, set the request's mode to 'no-cors' to fetch the resource with CORS disabled"
+      //If there is no first render(durning first render clubID is 0, cuz it is default state value in App component) get info about clicked club
       if (clubID.clubID !== 0) {
         fetch(`${API_KEY}${clubID.clubID}`, {
           method: "GET",
