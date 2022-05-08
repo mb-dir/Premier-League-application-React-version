@@ -1,3 +1,20 @@
 .ClubInfo {
   color: beige;
 }
+.ClubInfo-container {
+  margin: 30px;
+}
+.ClubInfo-info {
+  font-size: 17px;
+  /* In order to keep the crest in the middle of the paragraph */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.ClubInfo-img {
+  height: 30px;
+}
+.ClubInfo-link {
+  color: beige;
+  font-size: 16px;
+}

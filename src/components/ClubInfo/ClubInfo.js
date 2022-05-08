@@ -26,9 +26,39 @@ export default function ClubInfo(clubID) {
     [ clubID.clubID ]
     //Everytime when clubID is changed get info about new(clicked) club
   );
+  let content;
+  //Durning first render clubInfo is falsy value so in order to avoid getting an error I check it with if
+  if (clubInfo) {
+    const {
+      name,
+      address,
+      crestUrl,
+      website,
+      email,
+      clubColors,
+      venue,
+    } = clubInfo;
+    content = (
+      <div className="ClubInfo-container">
+        <h2>{name}</h2>
+        <p className="ClubInfo-info">address: {address}</p>
+        <p className="ClubInfo-info">venue: {venue}</p>
+        <p className="ClubInfo-info">club colors: {clubColors}</p>
+        <p className="ClubInfo-info">
+          crest:{" "}
+          <img className="ClubInfo-img" src={crestUrl} alt={`${name} crest`} />
+        </p>
+        <p className="ClubInfo-info">email: {email}</p>
+        <a className="ClubInfo-link" href={website}>
+          website
+        </a>
+      </div>
+    );
+  }
   return (
     <section className="ClubInfo">
       <h2>Here will be info about the clicked club</h2>
+      {content}
     </section>
   );
 }
