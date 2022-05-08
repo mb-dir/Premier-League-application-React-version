@@ -4,24 +4,24 @@ import "./ClubInfo.css";
 //Durning first render clubID is 0, cuz it is the default value of state in App
 export default function ClubInfo(clubID) {
   const [ clubInfo, setClubInfo ] = React.useState({});
-
-  //Get all teams and find the clicked team by clubID
   const API_KEY = "https://api.football-data.org/v2/competitions/PL/teams/";
   React.useEffect(
     () => {
-      fetch(API_KEY, {
-        method: "GET",
-        headers: {
-          "X-Auth-Token": "b100821898ab4506af51fd31aa51125e",
-        },
-      })
-        .then(clubs => clubs.json())
-        .then(clubs => {
-          const clickedClub = clubs.teams.find(club => {
-            return club.id === clubID.clubID;
+      //If there is no first render(durning first render clubID is 0, cuz it is default state value in App component) get info about clicked club - BUT I get an error "Access to fetch at 'https://api.football-data.org/v2/competitions/PL/teams/68' from origin 'http://localhost:3000' has been blocked by CORS policy: No 'Access-Control-Allow-Origin' header is present on the requested resource. If an opaque response serves your needs, set the request's mode to 'no-cors' to fetch the resource with CORS disabled"
+      if (clubID.clubID !== 0) {
+        fetch(`${API_KEY}${clubID.clubID}`, {
+          method: "GET",
+          headers: {
+            "X-Auth-Token": "b100821898ab4506af51fd31aa51125e",
+          },
+        })
+          .then(club => club.json())
+          .then(club => {
+            if (clubID.clubID) {
+              setClubInfo(club);
+            }
           });
-          setClubInfo(clickedClub);
-        });
+      }
     },
     [ clubID.clubID ]
     //Everytime when clubID is changed get info about new(clicked) club
