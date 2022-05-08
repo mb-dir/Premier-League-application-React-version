@@ -27,8 +27,8 @@ export default function ClubInfo(clubID) {
     //Everytime when clubID is changed get info about new(clicked) club
   );
   let content;
-  //Durning first render clubInfo is falsy value so in order to avoid getting an error I check it with if
-  if (clubInfo) {
+  //Create content only when clubID.clubID is !== 0, cuz that means user clicked the crest
+  if (clubID.clubID) {
     const {
       name,
       address,
@@ -57,7 +57,12 @@ export default function ClubInfo(clubID) {
   }
   return (
     <section className="ClubInfo">
-      {clubInfo ? content : <h2>Here will be info about the clicked club</h2>}
+      {/* Render only when clubID.clubID is not 0(0 is default value of state in App, and when it is 0 that means it is first render before clicking the crest), that means user clicked the crest*/}
+      {clubID.clubID ? (
+        content
+      ) : (
+        <h2>Here will be info about the clicked club</h2>
+      )}
     </section>
   );
 }
