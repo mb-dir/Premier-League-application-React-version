@@ -1,6 +1,6 @@
 import React from "react";
 import "./Slider.css";
-export default function Slider() {
+export default function Slider(settingID) {
   const API_KEY = "https://api.football-data.org/v2/competitions/PL/teams";
 
   const [ clubsInfo, setClubsInfo ] = React.useState([]);
@@ -16,6 +16,11 @@ export default function Slider() {
       .then(clubs => setClubsInfo(clubs.teams));
   }, []);
 
+  //Update state in App, thanks to this App knows which club(id) was clicked, and App can pass this info to ClubInfo component to render the info abou clicked club
+  function setID(id) {
+    settingID.settingID(id);
+  }
+
   const clubsCrest = clubsInfo.map(club => {
     const { crestUrl, name, id } = club;
     return (
@@ -24,6 +29,7 @@ export default function Slider() {
         src={crestUrl}
         className="Slider-crest"
         alt={`The crest of ${name}`}
+        onClick={() => setID(id)}
       />
     );
   });

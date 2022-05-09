@@ -5,6 +5,14 @@ import Slider from "./components/Slider/Slider";
 import ClubInfo from "./components/ClubInfo/ClubInfo";
 
 function App() {
+  const [ clubID, setClubID ] = React.useState(0);
+
+  //https://stackoverflow.com/questions/29100774/reactjs-setstate-on-parent-inside-child-component
+  //In order to pass setState to child I have to create "wrapper" function for it which is passed as props
+  function settingID(id) {
+    setClubID(id);
+  }
+
   return (
     <main className="App">
       <header className="App-header">
@@ -14,8 +22,8 @@ function App() {
           clubs like stadion, date of creation, current players, etc.
         </p>
       </header>
-      <Slider />
-      <ClubInfo />
+      <Slider settingID={settingID} />
+      <ClubInfo clubID={clubID} />
     </main>
   );
 }
