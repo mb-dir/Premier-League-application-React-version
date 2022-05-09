@@ -26,7 +26,7 @@ export default function ClubInfo(clubID) {
     [ clubID.clubID ]
     //Everytime when clubID is changed get info about new(clicked) club
   );
-  let content;
+  let infoClubContent;
   let teamSheet;
   //Create content only when clubID.clubID is !== 0, cuz that means user clicked the crest
   if (clubID.clubID) {
@@ -40,7 +40,7 @@ export default function ClubInfo(clubID) {
       venue,
       squad,
     } = clubInfo;
-    content = (
+    infoClubContent = (
       <div className="ClubInfo-container">
         <h2>{name}</h2>
         <p className="ClubInfo-info">address: {address}</p>
@@ -70,7 +70,7 @@ export default function ClubInfo(clubID) {
       {/* Render only when clubID.clubID is not 0(0 is default value of state in App, and when it is 0 that means it is first render before clicking the crest), that means user clicked the crest*/}
       {clubID.clubID ? (
         <div>
-          {content}
+          {infoClubContent}
           <h2>Squad</h2>
           <ul>{teamSheet}</ul>
         </div>
