@@ -27,6 +27,7 @@ export default function ClubInfo(clubID) {
     //Everytime when clubID is changed get info about new(clicked) club
   );
   let content;
+  let teamSheet;
   //Create content only when clubID.clubID is !== 0, cuz that means user clicked the crest
   if (clubID.clubID) {
     const {
@@ -37,6 +38,7 @@ export default function ClubInfo(clubID) {
       email,
       clubColors,
       venue,
+      squad,
     } = clubInfo;
     content = (
       <div className="ClubInfo-container">
@@ -54,12 +56,24 @@ export default function ClubInfo(clubID) {
         </a>
       </div>
     );
+
+    //Create the list of player based on the "squad"
+    if (squad) {
+      teamSheet = squad.map(player => {
+        const { id, name, position, countryOfBirth } = player;
+        return <li key={id}>{`${name}(${position}, ${countryOfBirth})`}</li>;
+      });
+    }
   }
   return (
     <section className="ClubInfo">
       {/* Render only when clubID.clubID is not 0(0 is default value of state in App, and when it is 0 that means it is first render before clicking the crest), that means user clicked the crest*/}
       {clubID.clubID ? (
-        content
+        <div>
+          {content}
+          <h2>Squad</h2>
+          <ul>{teamSheet}</ul>
+        </div>
       ) : (
         <h2>Here will be info about the clicked club</h2>
       )}
