@@ -18,3 +18,12 @@
   color: beige;
   font-size: 16px;
 }
+.ClubInfo-players {
+  margin: 30px;
+  padding: 0;
+  list-style-type: none;
+}
+.ClubInfo-player {
+  margin-top: 5px;
+  font-size: 17px;
+}

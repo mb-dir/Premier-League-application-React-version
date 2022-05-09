@@ -61,7 +61,12 @@ export default function ClubInfo(clubID) {
     if (squad) {
       teamSheet = squad.map(player => {
         const { id, name, position, countryOfBirth } = player;
-        return <li key={id}>{`${name}(${position}, ${countryOfBirth})`}</li>;
+        return (
+          <li
+            className="ClubInfo-player"
+            key={id}
+          >{`${name}(${position}, ${countryOfBirth})`}</li>
+        );
       });
     }
   }
@@ -72,7 +77,7 @@ export default function ClubInfo(clubID) {
         <div>
           {infoClubContent}
           <h2>Squad</h2>
-          <ul>{teamSheet}</ul>
+          <ul className="ClubInfo-players">{teamSheet}</ul>
         </div>
       ) : (
         <h2>Here will be info about the clicked club</h2>
