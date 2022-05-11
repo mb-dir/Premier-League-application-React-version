@@ -61,7 +61,7 @@ function App() {
         </p>
       </header>
       <Slider settingID={settingID} clubsInfo={clubsInfo} />
-      <ClubInfo clubID={clubID} />
+      <ClubInfo clubInfo={clubInfo} />
     </main>
   );
 }

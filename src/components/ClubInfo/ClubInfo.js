@@ -1,12 +1,11 @@
 import React from "react";
 import "./ClubInfo.css";
 
-//Durning first render clubID is 0, cuz it is the default value of state in App
 export default function ClubInfo(clubData) {
   let infoClubContent;
   let teamSheet;
-  //Create content only when clubID.clubID is !== 0, cuz that means user clicked the crest
-  if (clubID.clubID) {
+  //Create content only when clubID.clubInfo is not an empty obj({} is passed when first render), cuz that means user clicked the crest
+  if (Object.keys(clubData.clubInfo).length !== 0) {
     const {
       name,
       address,
@@ -16,7 +15,7 @@ export default function ClubInfo(clubData) {
       clubColors,
       venue,
       squad,
-    } = clubInfo;
+    } = clubData.clubInfo;
     infoClubContent = (
       <div className="ClubInfo-container">
         <h2>{name}</h2>
@@ -49,8 +48,8 @@ export default function ClubInfo(clubData) {
   }
   return (
     <section className="ClubInfo">
-      {/* Render only when clubID.clubID is not 0(0 is default value of state in App, and when it is 0 that means it is first render before clicking the crest), that means user clicked the crest*/}
-      {clubID.clubID ? (
+      {/* Render only when clubData.clubInfo is not {}({} is default value of state in App, and when it is {} that means it is first render before clicking the crest), that means user clicked the crest*/}
+      {Object.keys(clubData.clubInfo).length !== 0 ? (
         <div>
           {infoClubContent}
           <h2>Squad</h2>
