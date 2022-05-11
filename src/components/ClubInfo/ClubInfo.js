@@ -2,30 +2,7 @@ import React from "react";
 import "./ClubInfo.css";
 
 //Durning first render clubID is 0, cuz it is the default value of state in App
-export default function ClubInfo(clubID) {
-  const [ clubInfo, setClubInfo ] = React.useState({});
-  const API_KEY = "https://api.football-data.org/v2/teams/";
-  React.useEffect(
-    () => {
-      //If there is no first render(durning first render clubID is 0, cuz it is default state value in App component) get info about clicked club
-      if (clubID.clubID !== 0) {
-        fetch(`${API_KEY}${clubID.clubID}`, {
-          method: "GET",
-          headers: {
-            "X-Auth-Token": "b100821898ab4506af51fd31aa51125e",
-          },
-        })
-          .then(club => club.json())
-          .then(club => {
-            if (clubID.clubID) {
-              setClubInfo(club);
-            }
-          });
-      }
-    },
-    [ clubID.clubID ]
-    //Everytime when clubID is changed get info about new(clicked) club
-  );
+export default function ClubInfo(clubData) {
   let infoClubContent;
   let teamSheet;
   //Create content only when clubID.clubID is !== 0, cuz that means user clicked the crest

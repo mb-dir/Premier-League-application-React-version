@@ -22,6 +22,29 @@ function App() {
       .then(clubs => setClubsInfo(clubs.teams));
   }, []);
 
+  //Getting info about clicked club
+  const [ clubInfo, setClubInfo ] = React.useState({});
+  const API_KEY_CLUB_INFO = "https://api.football-data.org/v2/teams/";
+  React.useEffect(
+    () => {
+      //If there is no first render(durning first render clubID is 0, cuz it is default state value in App component) get info about clicked club
+      if (clubID !== 0) {
+        fetch(`${API_KEY_CLUB_INFO}${clubID}`, {
+          method: "GET",
+          headers: {
+            "X-Auth-Token": "b100821898ab4506af51fd31aa51125e",
+          },
+        })
+          .then(club => club.json())
+          .then(club => {
+            setClubInfo(club);
+          });
+      }
+    },
+    [ clubID ]
+    //Everytime when clubID is changed get info about new(clicked) club
+  );
+
   //https://stackoverflow.com/questions/29100774/reactjs-setstate-on-parent-inside-child-component
   //In order to pass setState to child I have to create "wrapper" function for it which is passed as props
   function settingID(id) {
