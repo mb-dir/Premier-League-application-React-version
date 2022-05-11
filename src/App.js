@@ -15,7 +15,7 @@ function App() {
   //Getting all teams for API
   const [ clubsInfo, setClubsInfo ] = React.useState([]);
   const API_KEY = "https://api.football-data.org/v2/competitions/PL/teams";
-  React.useLayoutEffect(() => {
+  React.useEffect(() => {
     fetch(API_KEY, {
       method: "GET",
       headers: {
