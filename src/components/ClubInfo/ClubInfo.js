@@ -2,10 +2,13 @@ import React from "react";
 import "./ClubInfo.css";
 
 export default function ClubInfo(clubData) {
+  //Durning first render props is an {}, so there is no reason to render any content - keeping info about it on bool value makes not repeat code
+  const isPassedPopsNotEmpty = Object.keys(clubData.clubInfo).length !== 0;
+
   let infoClubContent;
   let teamSheet;
   //Create content only when clubID.clubInfo is not an empty obj({} is passed when first render), cuz that means user clicked the crest
-  if (Object.keys(clubData.clubInfo).length !== 0) {
+  if (isPassedPopsNotEmpty) {
     const {
       name,
       address,
@@ -49,7 +52,7 @@ export default function ClubInfo(clubData) {
   return (
     <section className="ClubInfo">
       {/* Render only when clubData.clubInfo is not {}({} is default value of state in App, and when it is {} that means it is first render before clicking the crest), that means user clicked the crest*/}
-      {Object.keys(clubData.clubInfo).length !== 0 ? (
+      {isPassedPopsNotEmpty ? (
         <div>
           {infoClubContent}
           <h2>Squad</h2>
