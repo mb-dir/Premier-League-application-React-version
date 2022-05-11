@@ -5,7 +5,12 @@ import Slider from "./components/Slider/Slider";
 import ClubInfo from "./components/ClubInfo/ClubInfo";
 
 function App() {
+  //https://stackoverflow.com/questions/29100774/reactjs-setstate-on-parent-inside-child-component
+  //In order to pass setState to child I have to create "wrapper" function for it which is passed as props
   const [ clubID, setClubID ] = React.useState(0);
+  function settingID(id) {
+    setClubID(id);
+  }
 
   //Getting all teams for API
   const [ clubsInfo, setClubsInfo ] = React.useState([]);
@@ -44,12 +49,6 @@ function App() {
     [ clubID ]
     //Everytime when clubID is changed get info about new(clicked) club
   );
-
-  //https://stackoverflow.com/questions/29100774/reactjs-setstate-on-parent-inside-child-component
-  //In order to pass setState to child I have to create "wrapper" function for it which is passed as props
-  function settingID(id) {
-    setClubID(id);
-  }
 
   return (
     <main className="App">
