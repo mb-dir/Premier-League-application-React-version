@@ -8,11 +8,18 @@ export default function Slider(clubData) {
 
   const clubsCrest = clubData.clubsInfo.map(club => {
     const { crestUrl, name, id } = club;
+    //If id is the same as id of clicked element add extra styles to highligh it
+    const { currentClubID } = clubData;
+    const classNameForImg =
+      currentClubID === id
+        ? "Slider-crest Slider-crest--highlight"
+        : "Slider-crest";
+
     return (
       <img
         key={id}
         src={crestUrl}
-        className="Slider-crest"
+        className={classNameForImg}
         alt={`The crest of ${name}`}
         onClick={() => setID(id)}
       />

@@ -59,7 +59,11 @@ function App() {
           clubs like stadion, date of creation, current players, etc.
         </p>
       </header>
-      <Slider settingID={settingID} clubsInfo={clubsInfo} />
+      <Slider
+        settingID={settingID}
+        clubsInfo={clubsInfo}
+        currentClubID={clubID}
+      />
       <ClubInfo clubInfo={clubInfo} />
     </main>
   );
